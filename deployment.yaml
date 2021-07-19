@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-deployment
+spec:
+  selector:
+    matchLabels:
+      backend: node
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        backend: node
+    spec:
+      containers:
+      - name: backend
+        image: wooxudong/k8s-backend
+        ports:
+        - containerPort: 3000
